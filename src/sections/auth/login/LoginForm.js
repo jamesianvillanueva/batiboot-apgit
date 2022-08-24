@@ -1,7 +1,6 @@
 import * as Yup from 'yup';
 import { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { useSnackbar } from 'notistack';
 // form
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -17,12 +16,10 @@ import useIsMountedRef from '../../../hooks/useIsMountedRef';
 import Iconify from '../../../components/Iconify';
 import { FormProvider, RHFTextField, RHFCheckbox } from '../../../components/hook-form';
 
-
 // ----------------------------------------------------------------------
 
 export default function LoginForm() {
   const { login } = useAuth();
-  const { enqueueSnackbar } = useSnackbar();
 
   const isMountedRef = useIsMountedRef();
 
@@ -34,8 +31,8 @@ export default function LoginForm() {
   });
 
   const defaultValues = {
-    email: '',
-    password: '',
+    email: 'demo@minimals.cc',
+    password: 'demo1234',
     remember: true,
   };
 
@@ -54,9 +51,6 @@ export default function LoginForm() {
   const onSubmit = async (data) => {
     try {
       await login(data.email, data.password);
-      
-      enqueueSnackbar('Login success!');
-
     } catch (error) {
       console.error(error);
 

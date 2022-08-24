@@ -1,31 +1,23 @@
 import * as Yup from 'yup';
 import { useSnackbar } from 'notistack';
-import { Link as RouterLink, useNavigate, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 // form
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 // @mui
-import { Stack, OutlinedInput, FormHelperText, Button } from '@mui/material';
+import { Stack, OutlinedInput, FormHelperText } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 // routes
-import { PATH_DASHBOARD, PATH_AUTH } from '../../../routes/paths';
-
-import useAuth from '../../../hooks/useAuth';
-import useIsMountedRef from '../../../hooks/useIsMountedRef';
+import { PATH_DASHBOARD } from '../../../routes/paths';
 // components
 import { FormProvider } from '../../../components/hook-form';
-
 
 // ----------------------------------------------------------------------
 
 export default function VerifyCodeForm() {
-  const { checkEmailCode, user } = useAuth()
-  const [temp, setTemp] = useState([])
   const navigate = useNavigate();
 
-  const isMountedRef = useIsMountedRef();
   const { enqueueSnackbar } = useSnackbar();
 
   const VerifyCodeSchema = Yup.object().shape({
@@ -57,8 +49,6 @@ export default function VerifyCodeForm() {
     control,
     setValue,
     handleSubmit,
-    reset,
-    setError,
     formState: { isSubmitting, errors },
   } = methods;
 
@@ -92,7 +82,7 @@ export default function VerifyCodeForm() {
     event.preventDefault();
   };
 
-  const handleChangeWithNextField =  async (event, handleChange) => {
+  const handleChangeWithNextField = (event, handleChange) => {
     const { maxLength, value, name } = event.target;
 
     const fieldIndex = name.replace('code', '');
@@ -108,22 +98,6 @@ export default function VerifyCodeForm() {
         }
       }
     }
-    setTemp([...temp, value])
-    /* if(fieldIntIndex >= 6){
-      try {
-        await new Promise((resolve) => setTimeout(resolve, 500));
-      //  const validate = await checkEmailCode(temp.join(""));
-     //    sessionStorage.setItem('email-recovery', user.uemail);
-        
-        
-      } catch (error) {   
-        reset();
-  
-        if (isMountedRef.current) {
-          setError('afterSubmit', { ...error, message: error.message });
-        }
-      }
-    } */
 
     handleChange(event);
   };
@@ -131,21 +105,13 @@ export default function VerifyCodeForm() {
   const onSubmit = async (data) => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 500));
-      await checkEmailCode(temp.join(""));
-     
-    
-      navigate(PATH_AUTH.newPassword);
-
       console.log('data', Object.values(data).join(''));
-      
 
       enqueueSnackbar('Verify success!');
 
+      navigate(PATH_DASHBOARD.root, { replace: true });
     } catch (error) {
       console.error(error);
-
-      reset();
-      setTemp("");
     }
   };
 
@@ -190,13 +156,6 @@ export default function VerifyCodeForm() {
         <LoadingButton fullWidth size="large" type="submit" variant="contained" loading={isSubmitting} sx={{ mt: 3 }}>
           Verify
         </LoadingButton>
-        {
-        /*
-        <Button fullWidth size="large" component={RouterLink} to={PATH_AUTH.resetPassword} sx={{ mt: 1 }}>
-          Back
-        </Button>
-        */
-        }
       </Stack>
     </FormProvider>
   );

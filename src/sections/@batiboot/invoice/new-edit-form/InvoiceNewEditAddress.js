@@ -7,7 +7,7 @@ import { Stack, Divider, Typography, Button } from '@mui/material';
 import useResponsive from '../../../../hooks/useResponsive';
 import useToggle from '../../../../hooks/useToggle';
 // _mock
-import { _invoiceAddressFrom, _invoiceAddressTo } from '../../../../_mock/batiboot/invoice_mock/_invoice';
+import { _invoiceAddressFrom, _invoiceAddressTo } from '../../../../_mock';
 // components
 import Iconify from '../../../../components/Iconify';
 //
@@ -58,7 +58,7 @@ export default function InvoiceNewEditAddress() {
           />
         </Stack>
 
-        <AddressInfo name={invoiceFrom.name} address={invoiceFrom.address}/>
+        <AddressInfo name={invoiceFrom.name} address={invoiceFrom.address} phone={invoiceFrom.phone} />
       </Stack>
 
       <Stack sx={{ width: 1 }}>
@@ -85,7 +85,7 @@ export default function InvoiceNewEditAddress() {
         </Stack>
 
         {invoiceTo ? (
-          <AddressInfo name={invoiceTo.name} address={invoiceTo.address} />
+          <AddressInfo name={invoiceTo.name} address={invoiceTo.address} phone={invoiceTo.phone} />
         ) : (
           <Typography typography="caption" sx={{ color: 'error.main' }}>
             {errors.invoiceTo ? errors.invoiceTo.message : null}

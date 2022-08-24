@@ -9,9 +9,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { LoadingButton } from '@mui/lab';
 import { Card, Stack } from '@mui/material';
 // routes
-import { PATH_BATIBOOT } from '../../../../routes/paths';
+import { PATH_DASHBOARD } from '../../../../routes/paths';
 // mock
-import { _invoiceAddressFrom } from '../../../../_mock/batiboot/invoice_mock/_invoice';
+import { _invoiceAddressFrom } from '../../../../_mock';
 // components
 import { FormProvider } from '../../../../components/hook-form';
 //
@@ -25,11 +25,9 @@ InvoiceNewEditForm.propTypes = {
   isEdit: PropTypes.bool,
   currentInvoice: PropTypes.object,
   handleCloseModal: PropTypes.func,
-  formRef: PropTypes.any,
 };
 
-export default function InvoiceNewEditForm({ isEdit, currentInvoice, handleCloseModal, formRef }) {
-
+export default function InvoiceNewEditForm({ isEdit, currentInvoice, handleCloseModal }) {
   const navigate = useNavigate();
 
   const [loadingSave, setLoadingSave] = useState(false);
@@ -44,14 +42,15 @@ export default function InvoiceNewEditForm({ isEdit, currentInvoice, handleClose
 
   const defaultValues = useMemo(
     () => ({
-      invoiceNumber: currentInvoice?.invoiceNumber || '',
+      invoiceNumber: currentInvoice?.invoiceNumber || '17099',
       createDate: currentInvoice?.createDate || null,
       dueDate: currentInvoice?.dueDate || null,
-      address: currentInvoice?.address || null,
-      orderStatus: currentInvoice?.orderStatus || '',
+      taxes: currentInvoice?.taxes || '',
+      status: currentInvoice?.status || 'draft',
+      discount: currentInvoice?.discount || '',
       invoiceFrom: currentInvoice?.invoiceFrom || _invoiceAddressFrom[0],
       invoiceTo: currentInvoice?.invoiceTo || null,
-      items: currentInvoice?.items || [{ itemDescription: '', actualCBM: 0, rateCBM: 0, totalAmount: 0 }],
+      items: currentInvoice?.items || [{ title: '', description: '', service: '', quantity: 0, price: 0, total: 0 }],
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [currentInvoice]
@@ -85,7 +84,7 @@ export default function InvoiceNewEditForm({ isEdit, currentInvoice, handleClose
     ...values,
     items: values.items.map((item) => ({
       ...item,
-      total: item.actualCBM * item.rateCBM,
+      total: item.quantity * item.price,
     })),
   };
 
@@ -97,7 +96,7 @@ export default function InvoiceNewEditForm({ isEdit, currentInvoice, handleClose
       reset();
       setLoadingSave(true);
       handleCloseModal();
-      navigate(PATH_BATIBOOT.invoice.list);
+      navigate(PATH_DASHBOARD.invoice.list);
       console.log(JSON.stringify(newInvoice, null, 2));
     } catch (error) {
       console.error(error);
@@ -112,7 +111,7 @@ export default function InvoiceNewEditForm({ isEdit, currentInvoice, handleClose
       reset();
       handleCloseModal();
       setLoadingSend(false);
-      navigate(PATH_BATIBOOT.invoice.list);
+      navigate(PATH_DASHBOARD.invoice.list);
       console.log(JSON.stringify(newInvoice, null, 2));
     } catch (error) {
       console.error(error);
@@ -127,38 +126,25 @@ export default function InvoiceNewEditForm({ isEdit, currentInvoice, handleClose
         <InvoiceNewEditDetails />
       </Card>
 
-      <Stack justifyContent="flex-end" direction="row" spacing={2} sx={{ my: 3 }}>
-      <LoadingButton
-          color="error"
-          size="small"
-          variant="contained"
-          loading={loadingSave && isSubmitting}
-          onClick={handleCloseModal}
-          type='submit'
-          sx={{display:'none'}}
-          ref={formRef}
-        />
-        
+      <Stack justifyContent="flex-end" direction="row" spacing={2} sx={{ mt: 3 }}>
         <LoadingButton
           color="inherit"
-          size="small"
+          size="large"
           variant="contained"
           loading={loadingSave && isSubmitting}
           onClick={handleSubmit(handleSaveAsDraft)}
-          type='submit'
-          sx={{display:'none'}}
-          ref={formRef}
-        />
+        >
+          Save as Draft
+        </LoadingButton>
 
         <LoadingButton
-          size="small"
+          size="large"
           variant="contained"
           loading={loadingSend && isSubmitting}
           onClick={handleSubmit(handleCreateAndSend)}
-          type='submit'
-          sx={{display:'none'}}
-          ref={formRef}
-        />
+        >
+          {isEdit ? 'Update' : 'Create'} & Send
+        </LoadingButton>
       </Stack>
     </FormProvider>
   );

@@ -34,13 +34,7 @@ export default function MainLayout() {
           }}
         >
           <Container>
-            <Logo sx={{ mb: 1, mx: 'auto' }} />
-
-            <Typography variant="caption" component="p">
-              © All rights reserved
-              <br /> made by &nbsp;
-              <Link href="https://minimals.cc/">minimals.cc</Link>
-            </Typography>
+            <MainFooter />
           </Container>
         </Box>
       )}

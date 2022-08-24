@@ -1,6 +1,7 @@
 // @mui
 import { enUS, frFR, zhCN, viVN, arSD } from '@mui/material/locale';
 // routes
+/* import { PATH_DASHBOARD } from './routes/paths'; */
 import { PATH_DASHBOARD, PATH_BATIBOOT } from './routes/paths';
 
 // API
@@ -34,13 +35,14 @@ export const MAPBOX_API = process.env.REACT_APP_MAPBOX_API;
 // ROOT PATH AFTER LOGIN SUCCESSFUL
 export const PATH_AFTER_LOGIN = PATH_DASHBOARD.general.app; // as '/dashboard/app'
 export const PATH_AFTER_LOGIN_BATIBOOT = PATH_BATIBOOT.general.dashboard;
+
 // LAYOUT
 // ----------------------------------------------------------------------
 
 export const HEADER = {
   MOBILE_HEIGHT: 64,
   MAIN_DESKTOP_HEIGHT: 88,
-  DASHBOARD_DESKTOP_HEIGHT: 92,
+  DASHBOARD_DESKTOP_HEIGHT: 22,
   DASHBOARD_DESKTOP_OFFSET_HEIGHT: 92 - 32,
 };
 

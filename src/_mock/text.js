@@ -128,3 +128,37 @@ export const description = [
   'Dolor numquam maiores praesentium dolorem nihil minus praesentium rem dolorem. Est rerum placeat. Numquam sed magni aliquam laborum enim facere ducimus.',
   'In sint enim nam et itaque et qui. Molestiae a iusto quidem quia temporibus id quia eaque eius. Quis quia consectetur saepe vero et molestias. Rem minima accusamus vitae adipisci molestiae unde voluptate consequatur molestiae. Rerum exercitationem quisquam vitae.'
 ];
+
+
+export const landingTitle = [
+  'Customize Packaging',
+  'Rebranding',
+  'Importing',
+  'Private Labeling',
+  'Warehousing',
+  'Fullfilment',
+
+];
+
+export const feedbackTitle = [
+  '- Steve McDonald',
+  '- Anna Briggs',
+  "- Jonathan Adams",
+];
+
+
+export const feedbackJobs = [
+  'Manager, Tesla Motors Ltd',
+  'Founder, Great Wall Corp',
+  "CEO, Smart Move Ltd",
+];
+
+
+
+
+export const feedbackDescription = [
+  ' " I’ve been happy with the services provided by TransCargo LLC. Samantha Culligan has been wonderful! She has returned my calls quickly, and she answered all my questions! " ',
+  ' " We were previously using an unreliable company with a very complicated registration and transfer process. Then we found TransCargo and the control came back to us. " ',
+  ' " This is due to their excellent service, competitive pricing and customer support. That’s becoming so distant and digital, it’s throughly refreshing to get such a personal touch. " ',
+
+];

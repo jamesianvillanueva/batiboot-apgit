@@ -67,7 +67,7 @@ export default function InvoiceNewEditDetails() {
                 InputLabelProps={{ shrink: true }}
               />
 
-              {/* <RHFSelect
+              <RHFSelect
                 name={`items[${index}].service`}
                 label="Service type"
                 size="small"
@@ -103,7 +103,7 @@ export default function InvoiceNewEditDetails() {
                     {option}
                   </MenuItem>
                 ))}
-              </RHFSelect> */}
+              </RHFSelect>
 
               <RHFTextField
                 size="small"

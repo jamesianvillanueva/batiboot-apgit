@@ -34,7 +34,7 @@ export default function VerifyCode() {
           </Typography>
 
           <Typography sx={{ color: 'text.secondary' }}>
-            We have emailed a 6-digit confirmation code to your email, please enter the code in below box to verify your
+            We have emailed a 6-digit confirmation code to acb@domain, please enter the code in below box to verify your
             email.
           </Typography>
 

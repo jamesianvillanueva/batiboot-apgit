@@ -46,9 +46,12 @@ export default function OrderTableRow({ row, selected, onSelectRow, onViewRow, o
       </TableCell>
 
       <TableCell sx={{ display: 'flex', alignItems: 'center' }}>
-       <Avatar alt={pName} color={createAvatar(pName).color} sx={{ mr: 2 }}>
-          {createAvatar(pName).name}
-        </Avatar>
+        {/* <Avatar alt={invoiceTo.name} color={createAvatar(invoiceTo.name).color} sx={{ mr: 2 }}>
+          {createAvatar(invoiceTo.name).name}
+        </Avatar> */}
+      {/*   <Typography variant="subtitle2" noWrap>
+            {invoiceTo.name}
+        </Typography> */}
         <Stack>
           <Typography variant="subtitle2" noWrap>
             {pName}

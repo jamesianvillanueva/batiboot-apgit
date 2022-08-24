@@ -3,10 +3,25 @@ import { randomInArray } from './funcs';
 
 // ----------------------------------------------------------------------
 
-export const _carouselsExample = [...Array(5)].map((_, index) => ({
+export const _carouselsExample = [...Array(6)].map((_, index) => ({
   id: _mock.id(index),
-  title: _mock.text.title(index),
-  image: _mock.image.feed(index),
+  title: _mock.text.landingTitle(index),
+  image: _mock.imagesBatiboot.batibootImages(index),
+  description: _mock.text.description(index),
+}));
+
+export const _carouselsFeedback = [...Array(3)].map((_, index) => ({
+  id: _mock.id(index),
+  title: _mock.text.feedbackTitle(index),
+  image: _mock.imagesBatiboot.feedbackPhotos(index),
+  description: _mock.text.feedbackDescription(index),
+  jobs: _mock.text.feedbackJobs(index),
+}));
+
+export const _carouselsServices = [...Array(6)].map((_, index) => ({
+  id: _mock.id(index),
+  title: _mock.text.landingTitle(index),
+  image: _mock.imagesBatiboot.sliderPhotos(index),
   description: _mock.text.description(index),
 }));
 
@@ -19,7 +34,7 @@ export const _carouselsMembers = [...Array(5)].map((_, index) => ({
 
 // ----------------------------------------------------------------------
 
-export const _faqs = [...Array(8)].map((_, index) => ({
+export const _faqs = [...Array(4)].map((_, index) => ({
   id: _mock.id(index),
   value: `panel${index + 1}`,
   heading: `Questions ${index + 1}`,

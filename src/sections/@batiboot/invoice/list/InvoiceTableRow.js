@@ -27,7 +27,7 @@ InvoiceTableRow.propTypes = {
 export default function InvoiceTableRow({ row, selected, onSelectRow, onViewRow, onEditRow, onDeleteRow }) {
   const theme = useTheme();
 
-  const { sent, invoiceNumber, createDate, dueDate, orderStatus, invoiceTo, totalAmount, actualCBM } = row;
+  const { sent, invoiceNumber, createDate, dueDate, status, invoiceTo, totalPrice } = row;
 
   const [openMenu, setOpenMenuActions] = useState(null);
 
@@ -61,28 +61,28 @@ export default function InvoiceTableRow({ row, selected, onSelectRow, onViewRow,
         </Stack>
       </TableCell>
 
-      <TableCell align="left">{createDate}</TableCell>
+      <TableCell align="left">{fDate(createDate)}</TableCell>
 
-      <TableCell align="left">{dueDate}</TableCell>
+      <TableCell align="left">{fDate(dueDate)}</TableCell>
 
-      <TableCell align="center">{`Php ${fCurrency(totalAmount)}`}</TableCell>
+      <TableCell align="center">{fCurrency(totalPrice)}</TableCell>
 
       <TableCell align="center" sx={{ textTransform: 'capitalize' }}>
-        {actualCBM}
+        {sent}
       </TableCell>
 
       <TableCell align="left">
         <Label
           variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
           color={
-            (orderStatus === 'paid' && 'success') ||
-            (orderStatus === 'unpaid' && 'warning') ||
-            (orderStatus === 'overdue' && 'error') ||
+            (status === 'paid' && 'success') ||
+            (status === 'unpaid' && 'warning') ||
+            (status === 'overdue' && 'error') ||
             'default'
           }
           sx={{ textTransform: 'capitalize' }}
         >
-          {orderStatus}
+          {status}
         </Label>
       </TableCell>
 
@@ -114,7 +114,6 @@ export default function InvoiceTableRow({ row, selected, onSelectRow, onViewRow,
                 View
               </MenuItem>
 
-                
               <MenuItem
                 onClick={() => {
                   onEditRow();

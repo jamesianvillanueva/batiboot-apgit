@@ -11,7 +11,7 @@ import useResponsive from '../../../hooks/useResponsive';
 import { fDate } from '../../../utils/formatTime';
 import createAvatar from '../../../utils/createAvatar';
 // routes
-import { PATH_BATIBOOT } from '../../../routes/paths';
+import { PATH_DASHBOARD } from '../../../routes/paths';
 // components
 import Label from '../../../components/Label';
 import Avatar from '../../../components/Avatar';
@@ -48,7 +48,7 @@ const WrapStyle = styled(Link)(({ theme }) => ({
 const linkTo = (params, mailId) => {
   const { systemLabel, customLabel } = params;
 
-  const baseUrl = PATH_BATIBOOT.mail.root;
+  const baseUrl = PATH_DASHBOARD.mail.root;
 
   if (systemLabel) {
     return `${baseUrl}/${systemLabel}/${mailId}`;

@@ -4,8 +4,6 @@ import { styled } from '@mui/material/styles';
 import { Button, Container, Typography } from '@mui/material';
 // layouts
 import LogoOnlyLayout from '../../layouts/LogoOnlyLayout';
-// hooks
-import useAuth from '../../hooks/useAuth';
 // routes
 import { PATH_AUTH } from '../../routes/paths';
 // components
@@ -28,9 +26,6 @@ const ContentStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function ResetPassword() {
-
-  const { method } = useAuth();
-  
   return (
     <Page title="Reset Password">
       <LogoOnlyLayout />
@@ -42,7 +37,7 @@ export default function ResetPassword() {
           </Typography>
 
           <Typography sx={{ color: 'text.secondary', mb: 5 }}>
-            Please enter the email address associated with your account and We will email you a code to reset your
+            Please enter the email address associated with your account and We will email you a link to reset your
             password.
           </Typography>
 

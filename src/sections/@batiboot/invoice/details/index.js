@@ -40,7 +40,6 @@ InvoiceDetails.propTypes = {
 };
 
 export default function InvoiceDetails({ invoice }) {
-
   const theme = useTheme();
 
   if (!invoice) {

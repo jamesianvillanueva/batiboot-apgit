@@ -121,17 +121,6 @@ function MenuMobileItem({ item, isOpen, onOpen }) {
           <Box sx={{ display: 'flex', flexDirection: 'column-reverse' }}>
             <NavSectionVertical
               navConfig={children}
-              sx={{
-                '& .MuiList-root:last-of-type .MuiListItemButton-root': {
-                  height: 200,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  bgcolor: 'background.neutral',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundImage: 'url(/assets/illustrations/illustration_dashboard.png)',
-                  '& > *:not(.MuiTouchRipple-root)': { display: 'none' },
-                },
-              }}
             />
           </Box>
         </Collapse>

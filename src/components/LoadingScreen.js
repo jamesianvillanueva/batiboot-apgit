@@ -48,11 +48,6 @@ export default function LoadingScreen({ isDashboard, ...other }) {
             }}
           >
             <Logo disabledLink sx={{ width: 64, height: 64 }} />
-           {/*  <div>
-              Batiboot
-            </div> */}
-
-            {/* LOADING SCREEN BATIBOOT */}
           </m.div>
 
           <Box

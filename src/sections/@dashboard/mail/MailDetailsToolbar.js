@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import { Box, Link, Tooltip, Typography, IconButton } from '@mui/material';
 // routes
-import { PATH_BATIBOOT } from '../../../routes/paths';
+import { PATH_DASHBOARD } from '../../../routes/paths';
 // hooks
 import useResponsive from '../../../hooks/useResponsive';
 // utils
@@ -37,7 +37,7 @@ export default function MailDetailsToolbar({ mail, ...other }) {
 
   const isDesktop = useResponsive('up', 'sm');
 
-  const baseUrl = PATH_BATIBOOT.mail.root;
+  const baseUrl = PATH_DASHBOARD.mail.root;
 
   const handleBack = () => {
     if (systemLabel) {

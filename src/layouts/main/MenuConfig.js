@@ -1,7 +1,7 @@
 // routes
 import { PATH_AUTH, PATH_DOCS, PATH_PAGE } from '../../routes/paths';
 // components
-import { PATH_AFTER_LOGIN, PATH_AFTER_LOGIN_BATIBOOT } from '../../config';
+import { PATH_AFTER_LOGIN } from '../../config';
 // components
 import Iconify from '../../components/Iconify';
 
@@ -18,7 +18,76 @@ const menuConfig = [
     icon: <Iconify icon={'eva:home-fill'} {...ICON_SIZE} />,
     path: '/',
   },
+
   {
+    title: 'About Us',
+    icon: <Iconify icon={'eva:file-fill'} {...ICON_SIZE} />,
+    path: '/about-us',
+  },
+  {
+    title: 'Our Services',
+    icon: <Iconify icon={'eva:file-fill'} {...ICON_SIZE} />,
+    path: '/services',
+  },
+
+  {
+    title: 'Contact Us',
+    icon: <Iconify icon={'eva:file-fill'} {...ICON_SIZE} />,
+    path: '/contact-us',
+  },
+
+  { 
+    title: 'Sign-in',
+    path: '/',
+    icon: <Iconify icon={'eva:file-fill'} {...ICON_SIZE} />,
+    children: [
+      {
+        items: [
+          { title: 'Login', path: PATH_AUTH.login },
+          { title: 'Register', path: PATH_AUTH.register },
+          { title: 'Reset password', path: PATH_AUTH.resetPassword },
+        ],
+      },
+    ]
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* { 
+    title: 'Sign-in',
+    path: '/',
+    icon: <Iconify icon={'eva:file-fill'} {...ICON_SIZE} />,
+    children: [
+      {
+        items: [
+          { title: 'Login', path: PATH_AUTH.login },
+          { title: 'Register', path: PATH_AUTH.register },
+          { title: 'Reset password', path: PATH_AUTH.resetPassword },
+          { title: 'Verify code', path: PATH_AUTH.verify },
+        ],
+      },
+    ]
+  }, */
+
+
+  /* {
     title: 'Pages',
     path: '/pages',
     icon: <Iconify icon={'eva:file-fill'} {...ICON_SIZE} />,
@@ -38,7 +107,7 @@ const menuConfig = [
       {
         subheader: 'Authentication',
         items: [
-          { title: 'Login', path: PATH_AUTH.login },
+          { title: 'Login', path: PATH_AUTH.loginUnprotected },
           { title: 'Register', path: PATH_AUTH.registerUnprotected },
           { title: 'Reset password', path: PATH_AUTH.resetPassword },
           { title: 'Verify code', path: PATH_AUTH.verify },
@@ -54,15 +123,15 @@ const menuConfig = [
       },
       {
         subheader: 'Dashboard',
-        items: [{ title: 'Dashboard', path: PATH_AFTER_LOGIN_BATIBOOT }],
+        items: [{ title: 'Dashboard', path: PATH_AFTER_LOGIN }],
       },
     ],
-  },
-  {
-    title: 'Documentation',
+  }, */
+ /*  {
+    title: 'Need Quotation?',
     icon: <Iconify icon={'eva:book-open-fill'} {...ICON_SIZE} />,
     path: PATH_DOCS,
-  },
+  }, */
 ];
 
 export default menuConfig;

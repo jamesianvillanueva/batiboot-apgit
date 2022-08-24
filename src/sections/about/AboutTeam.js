@@ -55,13 +55,13 @@ export default function AboutTeam() {
     <Container component={MotionViewport} sx={{ pb: 10, textAlign: 'center' }}>
       <m.div variants={varFade().inDown}>
         <Typography component="p" variant="overline" sx={{ mb: 2, color: 'text.secondary' }}>
-          Dream team
+          The Batibot Members
         </Typography>
       </m.div>
 
       <m.div variants={varFade().inUp}>
         <Typography variant="h2" sx={{ mb: 3 }}>
-          Great team is the key
+          We are the Pillars
         </Typography>
       </m.div>
 
@@ -73,8 +73,7 @@ export default function AboutTeam() {
             color: (theme) => (theme.palette.mode === 'light' ? 'text.secondary' : 'common.white'),
           }}
         >
-          Minimal will provide you support if you have any problems, our support team will reply within a day and we
-          also have detailed documentation.
+          Batiboot is your all in one B2B Solutions that offers Product Sourcing, Importing, Warehousing, Fulfillment and E-commerce.
         </Typography>
       </m.div>
 

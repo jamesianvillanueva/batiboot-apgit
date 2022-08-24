@@ -3,7 +3,7 @@ import { NavLink as RouterLink } from 'react-router-dom';
 // @mui
 import { Typography, ListItemText, ListItemIcon, ListItemButton } from '@mui/material';
 // routes
-import { PATH_BATIBOOT } from '../../../routes/paths';
+import { PATH_DASHBOARD } from '../../../routes/paths';
 // components
 import Iconify from '../../../components/Iconify';
 
@@ -24,7 +24,7 @@ const LABEL_ICONS = {
 };
 
 const linkTo = (label) => {
-  const baseUrl = PATH_BATIBOOT.mail.root;
+  const baseUrl = PATH_DASHBOARD.mail.root;
 
   if (label.type === 'system') {
     return `${baseUrl}/${label.id}`;

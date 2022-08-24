@@ -7,12 +7,12 @@ import {
   HomeHero,
   HomeMinimal,
   HomeDarkMode,
-  HomeLookingFor,
+ /*  HomeLookingFor, */
   HomeColorPresets,
   HomePricingPlans,
   HomeAdvertisement,
   HomeCleanInterfaces,
-  HomeHugePackElements,
+/*   HomeHugePackElements, */
 } from '../sections/home';
 
 // ----------------------------------------------------------------------
@@ -33,7 +33,7 @@ export default function HomePage() {
       <ContentStyle>
         <HomeMinimal />
 
-        <HomeHugePackElements />
+{/*         <HomeHugePackElements /> */}
 
         <HomeDarkMode />
 
@@ -42,8 +42,8 @@ export default function HomePage() {
         <HomeCleanInterfaces />
 
         <HomePricingPlans />
-
-        <HomeLookingFor />
+{/* 
+        <HomeLookingFor /> */}
 
         <HomeAdvertisement />
       </ContentStyle>

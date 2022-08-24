@@ -7,5 +7,4 @@ export { default as AppTopRelated } from './AppTopRelated';
 export { default as AppAreaInstalled } from './AppAreaInstalled';
 export { default as AppWidgetSummary } from './AppWidgetSummary';
 export { default as AppCurrentDownload } from './AppCurrentDownload';
-export { default as SampleWelcome } from './SampleWelcome'
 export { default as AppTopInstalledCountries } from './AppTopInstalledCountries';

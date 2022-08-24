@@ -10,7 +10,6 @@ import { TableMoreMenu } from '../../../../components/table';
 
 import { PATH_BATIBOOT } from '../../../../routes/paths';
 import _mock from '../../../../_mock';
-import createAvatar from '../../../../utils/createAvatar';
 
 // ----------------------------------------------------------------------
 
@@ -26,7 +25,7 @@ const delay = 3;
 
 export default function UserTableRow({ row, selected, onEditRow, onSelectRow, onDeleteRow, path }) {
   const theme = useTheme();
- 
+
   const {
     name,
     avatarUrl,
@@ -135,31 +134,16 @@ export default function UserTableRow({ row, selected, onEditRow, onSelectRow, on
         }
         </TableCell>
 
-        <TableCell sx={{ display: 'flex', alignItems: 'center' }}>
-        { showSkeleton ? (
-          <>
-          <Avatar alt={name} color={createAvatar(name).color} sx={{ mr: 2 }}>
-            {createAvatar(name).name}
-          </Avatar>
-          <Typography variant="subtitle2" noWrap sx={{ textTransform: 'capitalize' }}>
-            {name} 
-          </Typography>
-          </>
-          ) : (
-            <Skeleton animation="wave" sx={{ width: '140px', height: '60px', mr: 2 }} />
-          )
-        }
-        </TableCell>
-       {/*  <TableCell>
+        <TableCell>
         { showSkeleton ? (
           <Typography variant="subtitle2" noWrap sx={{ textTransform: 'capitalize' }}>
-            {name} 
+            {name}
           </Typography>
           ) : (
               <Skeleton animation="wave" sx={{ width: '140px', height: '60px', mr: 2 }} />
           )
         }
-        </TableCell> */}
+        </TableCell>
 
         <TableCell align="left">
           { showSkeleton ? (
@@ -1332,18 +1316,18 @@ export default function UserTableRow({ row, selected, onEditRow, onSelectRow, on
      if (path === PATH_BATIBOOT.user.designation) {
       return <DesignationTable />;
     }
-    if(path === PATH_BATIBOOT.user.createDesignation){
+    /* if(path === PATH_APGIT.user.createDesignation){
       return <TempAddDesignationTable />
-    } 
+    } */
     if (path === PATH_BATIBOOT.user.deparment) {
       return <DepartmentTable />;
     }
     if (path === PATH_BATIBOOT.user.list) {
       return <UserTable />;
     }
-    if(path === PATH_BATIBOOT.user.createRole){
+    /* if(path === PATH_APGIT.user.createRole){
       return <TempAddRoleTable />
-    }
+    } */
     if (path === PATH_BATIBOOT.user.role) {
       return <RoleTable />;
     }

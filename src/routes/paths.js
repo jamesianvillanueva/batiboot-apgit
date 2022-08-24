@@ -19,15 +19,14 @@ export const PATH_AUTH = {
   registerUnprotected: path(ROOTS_AUTH, '/register-unprotected'),
   verify: path(ROOTS_AUTH, '/verify'),
   resetPassword: path(ROOTS_AUTH, '/reset-password'),
- // newPassword: (token) => path(ROOTS_AUTH, `/new-password/${token}`),
-  newPassword: path(ROOTS_AUTH, `/new-password`),
-
+  newPassword: path(ROOTS_AUTH, '/new-password'),
 };
 
 
 export const PATH_PAGE = {
   comingSoon: '/coming-soon',
   maintenance: '/maintenance',
+  home2: '/home2',
   pricing: '/pricing',
   payment: '/payment',
   about: '/about-us',
@@ -39,7 +38,8 @@ export const PATH_PAGE = {
   components: '/components',
 };
 
-export const PATH_DASHBOARD = {
+
+export const  PATH_DASHBOARD = {
   root: ROOTS_DASHBOARD,
   general: {
     app: path(ROOTS_DASHBOARD, '/app'),
@@ -116,7 +116,6 @@ export const PATH_BATIBOOT = {
     list: path(ROOTS_BATIBOOT, '/invoice/list'),
     create: path(ROOTS_BATIBOOT, '/invoice/create'),
     view: (id) => path(ROOTS_BATIBOOT, `/invoice/${id}`),
-    edit: (id) => path(ROOTS_BATIBOOT, `/invoice/${id}/edit`) 
   },
   user: {
     root: path(ROOTS_BATIBOOT, '/user'),
@@ -124,22 +123,15 @@ export const PATH_BATIBOOT = {
     designation: path(ROOTS_BATIBOOT, '/user/designation'),
     department: path(ROOTS_BATIBOOT, '/user/department'),
     role: path(ROOTS_BATIBOOT, '/user/roles'),
-    createRole: path(ROOTS_BATIBOOT, '/user/roles/create'),
-    createDesignation: path(ROOTS_BATIBOOT, '/user/designation/create'),
-    createDepartment: path(ROOTS_BATIBOOT, '/user/department/create'),
   },
   order: {
     root: path(ROOTS_BATIBOOT, '/order'),
     list: path(ROOTS_BATIBOOT, '/order/list'),
-    createOrder: path(ROOTS_BATIBOOT, '/order/create'),
     shipment: path(ROOTS_BATIBOOT, '/order/tracking'),
-    createShipment: path(ROOTS_BATIBOOT, '/order/tracking/createShipment'),
-
   },
   inquire: {
     root: path(ROOTS_BATIBOOT, '/inquire'),
     list: path(ROOTS_BATIBOOT, '/inquire/list'),
-    create: path(ROOTS_BATIBOOT, '/inquire/create'),
   },
   help: {
     root: path(ROOTS_BATIBOOT, '/help'),

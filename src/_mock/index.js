@@ -13,7 +13,5 @@ export * from './_ecommerce';
 export * from './_analytics';
 export * from './_countries';
 export * from './_top100Films';
-export * from './_sampleData';
-export * from './_profile_mock_data';
 
 export default _mock;

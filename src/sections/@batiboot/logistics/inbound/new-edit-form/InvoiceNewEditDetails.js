@@ -1,4 +1,4 @@
-/* // form
+// form
 import { useFormContext, useFieldArray } from 'react-hook-form';
 // @mui
 import { Box, Stack, Button, Divider, Typography, InputAdornment, MenuItem } from '@mui/material';
@@ -183,4 +183,3 @@ export default function InvoiceNewEditDetails() {
     </Box>
   );
 }
- */

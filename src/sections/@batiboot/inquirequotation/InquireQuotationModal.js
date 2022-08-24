@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import { useSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 // form
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -32,16 +32,9 @@ const GENDER_OPTION = [
 ];
 
 const CATEGORY_OPTION = [
-  { group: 'Category 1', 
-      classify: ['Home & Garden', 'Gift & Crafts', 'Beauty & Personal Use', 'Electrical Equipment', 
-      'Fashion Accessories', 'Home Appliance', 'Luggage, Bags & Cases', 'Power Transmission', 'Tools & Hardware', 'Sports Entertainment'] 
-  },
-  { group: 'Category 2', classify: ['Apparel', 'Packaging & Printing', 'Liquid & Chemicals', 'Fabric & Textile',
-    'Food & Beverages', 'Textiles', 'Machinery', 'Renewable Energy', 'School & Office Supplies', 'Toys & Hobbies'
-  ]},
-  { group: 'Category 3', classify: ['Furniture', 'Plants & Agriculture', 'Consumer Electronics, Safety & Security', 'Fabrication',
-    'Health & Medical', 'Lights & Lightning', 'Vehicle Parts & Accessories', 'Rubber & Plastics', 'Shoes & Accessories', 'Jewelries'
-  ]},
+  { group: 'Clothing', classify: ['Shirts', 'T-shirts', 'Jeans', 'Leather'] },
+  { group: 'Tailored', classify: ['Suits', 'Blazers', 'Trousers', 'Waistcoats'] },
+  { group: 'Accessories', classify: ['Shoes', 'Backpacks and bags', 'Bracelets', 'Face masks'] },
 ];
 
 const TAGS_OPTION = [
@@ -71,44 +64,13 @@ const LabelStyle = styled(Typography)(({ theme }) => ({
 ProductNewEditForm.propTypes = {
   isEdit: PropTypes.bool,
   currentProduct: PropTypes.object,
-  formRef: PropTypes.any,
 };
 
-export default function ProductNewEditForm({ isEdit, currentProduct, formRef, handleCloseModal }) {
+export default function ProductNewEditForm({ isEdit, currentProduct }) {
   const navigate = useNavigate();
 
   const { enqueueSnackbar } = useSnackbar();
-  const [loadingSave, setLoadingSave] = useState(false);
-  const [loadingSend, setLoadingSend] = useState(false);
-  const handleSaveAsDraft = async () => {
-    setLoadingSave(true);
 
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      reset();
-      setLoadingSave(true);
-      handleCloseModal();
-    //  navigate(PATH_BATIBOOT.invoice.list);
-   //   console.log(JSON.stringify(newInvoice, null, 2));
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const handleCreateAndSend = async () => {
-    setLoadingSend(true);
-
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      reset();
-      handleCloseModal();
-      setLoadingSend(false);
-   /*    navigate(PATH_BATIBOOT.invoice.list);
-      console.log(JSON.stringify(newInvoice, null, 2)); */
-    } catch (error) {
-      console.error(error);
-    }
-  };
   const NewProductSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
     description: Yup.string().required('Description is required'),
@@ -200,7 +162,7 @@ export default function ProductNewEditForm({ isEdit, currentProduct, formRef, ha
 
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-      <Grid container spacing={3} sx={{ pb: 10}}>
+      <Grid container spacing={3}>
         <Grid item xs={12} md={8}>
           <Card sx={{ p: 3 }}>
             <Stack spacing={3}>
@@ -237,10 +199,10 @@ export default function ProductNewEditForm({ isEdit, currentProduct, formRef, ha
                 <RHFTextField name="quantity" label="Quantities" />
 
                 <RHFTextField name="code" label="Product Code" />
-              {/* 
-                <RHFTextField name="sku" label="Product SKU" /> */}
 
-              {/*   <div>
+                <RHFTextField name="sku" label="Product SKU" />
+
+                <div>
                   <LabelStyle>Gender</LabelStyle>
                   <RHFRadioGroup
                     name="gender"
@@ -249,7 +211,7 @@ export default function ProductNewEditForm({ isEdit, currentProduct, formRef, ha
                       '& .MuiFormControlLabel-root': { mr: 4 },
                     }}
                   />
-                </div> */}
+                </div>
 
                 <RHFSelect name="category" label="Category">
                   {CATEGORY_OPTION.map((category) => (
@@ -289,7 +251,7 @@ export default function ProductNewEditForm({ isEdit, currentProduct, formRef, ha
               <Stack spacing={3} mb={2}>
                 <RHFTextField
                   name="price"
-                  label="Price per piece"
+                  label="Regular Price"
                   placeholder="0.00"
                   value={getValues('price') === 0 ? '' : getValues('price')}
                   onChange={(event) => setValue('price', Number(event.target.value))}
@@ -299,7 +261,7 @@ export default function ProductNewEditForm({ isEdit, currentProduct, formRef, ha
                     type: 'number',
                   }}
                 />
-{/* 
+
                 <RHFTextField
                   name="priceSale"
                   label="Sale Price"
@@ -311,39 +273,17 @@ export default function ProductNewEditForm({ isEdit, currentProduct, formRef, ha
                     startAdornment: <InputAdornment position="start">$</InputAdornment>,
                     type: 'number',
                   }}
-                /> */}
+                />
               </Stack>
 
               <RHFSwitch name="taxes" label="Price includes taxes" />
             </Card>
 
-            
+            <LoadingButton type="submit" variant="contained" size="large" loading={isSubmitting}>
+              {!isEdit ? 'Create Inquire' : 'Save Changes'}
+            </LoadingButton>
           </Stack>
-          <LoadingButton
-          color="inherit"
-          size="small"
-          variant="contained"
-          loading={loadingSave && isSubmitting}
-          onClick={handleSubmit(handleSaveAsDraft)}
-          type='submit'
-          sx={{display:'none'}}
-          ref={formRef}
-        />
-
-        <LoadingButton
-          size="small"
-          variant="contained"
-          loading={loadingSend && isSubmitting}
-          onClick={handleSubmit(handleCreateAndSend)}
-          type='submit'
-          sx={{display:'none'}}
-          ref={formRef}
-        />
-          
         </Grid>
-       {/*  <Grid md={12} sx={{ py: 2 ,mt: 4 }}> */}
-            
-    {/*     </Grid> */}
       </Grid>
     </FormProvider>
   );

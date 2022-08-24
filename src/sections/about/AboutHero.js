@@ -11,10 +11,10 @@ const RootStyle = styled('div')(({ theme }) => ({
   backgroundSize: 'cover',
   backgroundPosition: 'center',
   backgroundImage:
-    'url(/assets/overlay.svg), url(https://minimal-assets-api-dev.vercel.app/assets/images/about/hero.jpg)',
+    'url(https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)',
   padding: theme.spacing(10, 0),
   [theme.breakpoints.up('md')]: {
-    height: 560,
+    height: 320,
     padding: 0,
   },
 }));
@@ -35,15 +35,14 @@ export default function AboutHero() {
     <RootStyle>
       <Container component={MotionContainer} sx={{ position: 'relative', height: '100%' }}>
         <ContentStyle>
-          <TextAnimate text="Who" sx={{ color: 'primary.main' }} variants={varFade().inRight} />
+          <TextAnimate text="About" sx={{ color: 'primary.main' }} variants={varFade().inRight} />
           <br />
           <Box sx={{ display: 'inline-flex', color: 'common.white' }}>
-            <TextAnimate text="we" sx={{ mr: 2 }} />
-            <TextAnimate text="are?" />
+            <TextAnimate text="Batiboot" sx={{ mr: 2 }} />
           </Box>
 
           <m.div variants={varFade().inRight}>
-            <Typography
+            {/* <Typography
               variant="h4"
               sx={{
                 mt: 5,
@@ -53,7 +52,7 @@ export default function AboutHero() {
             >
               Let's work together and
               <br /> make awesome site easily
-            </Typography>
+            </Typography> */}
           </m.div>
         </ContentStyle>
       </Container>

@@ -13,8 +13,6 @@ const PRIMARY = {
   main: '#00AB55',
   dark: '#007B55',
   darker: '#005249',
-  pink: '#FF69B4',
-  custom: '#3EADCF'
 };
 const SECONDARY = {
   lighter: '#D6E4FF',
@@ -23,12 +21,6 @@ const SECONDARY = {
   dark: '#1939B7',
   darker: '#091A7A',
 };
-// ADD CUSTOM COLOR - theme.primary.pink.main to Call custom color
-
-const PINK = {
-  main: '#FF69B4'
-}
-
 const INFO = {
   lighter: '#D0F2FF',
   light: '#74CAFF',
@@ -104,7 +96,6 @@ const COMMON = {
   warning: { ...WARNING, contrastText: GREY[800] },
   error: { ...ERROR, contrastText: '#fff' },
   grey: GREY,
-  pink: { ...PINK, contrastText: '#fff'},
   gradients: GRADIENTS,
   chart: CHART_COLORS,
   divider: GREY[500_24],

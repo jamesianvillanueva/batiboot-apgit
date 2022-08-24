@@ -52,9 +52,6 @@ export default function InquireQuotationTableRow({ row, selected, onSelectRow, o
       {/*   <Typography variant="subtitle2" noWrap>
             {invoiceTo.name}
         </Typography> */}
-        <Avatar alt={pName} color={createAvatar(pName).color} sx={{ mr: 2 }}>
-          {createAvatar(pName).name}
-        </Avatar>
         <Stack>
           <Typography variant="subtitle2" noWrap>
             {pName}
